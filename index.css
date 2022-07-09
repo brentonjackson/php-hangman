@@ -1,0 +1,25 @@
+body {
+	margin: auto;
+	text-align: center;
+}
+
+
+.word {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 15px;
+	font-size: 25px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.last-letter {
+	margin: 0 !important;
+}
+
+.letter {
+	margin-right: 25px;
+	text-decoration: underline;
+	text-transform: capitalize;
+	font-family: monospace;
+}
