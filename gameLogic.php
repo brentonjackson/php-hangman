@@ -4,7 +4,9 @@
 # button is pressed
 if(isset($_POST["guess_submit"])) {
 	addGuess();
-	buildWord();
+
+	# if the guess is incorrect, move
+	# to the next hangman stage
 	if (strpos($_COOKIE['word'], $_POST['guess']) === false) {
 		nextImage();
 	}
@@ -14,15 +16,18 @@ if(isset($_POST["guess_submit"])) {
 # reads and validates the users guess and 
 # adds it to the guesses cookie. 
 function addGuess() {
+	# if the entire word is guessed, enter the win page
 	if ($_POST['guess'] == $_COOKIE['word']) {
 		header("Location: gameOver.php?state=win");
 	}
+
+	# add current guess to the guesses cookie
 	if ($_COOKIE['guesses'] == ",") {
-		setcookie('guesses', $_POST['guess'], time() + (3600 * 24));
-		$_COOKIE['guesses'] = $_POST['guess'];
+		setcookie('guesses', strtolower($_POST['guess']), time() + (3600 * 24));
+		$_COOKIE['guesses'] = strtolower($_POST['guess']);
 	} else {
-		setcookie('guesses', $_COOKIE['guesses'] . ',' . $_POST['guess'], time() + (3600 * 24));
-		$_COOKIE['guesses'] .= ',' . $_POST['guess'];
+		setcookie('guesses', strtolower($_COOKIE['guesses']) . ',' . $_POST['guess'], time() + (3600 * 24));
+		$_COOKIE['guesses'] .= ',' . strtolower($_POST['guess']);
 	}
 }
 
@@ -80,52 +85,67 @@ function loadCookies() {
 }
 
 
-# called from buildWord(). given an index of a words
-# letter, this function checks to see if that letter
-# has been guessed yet, if so return it, if not return '-'.
-function getLetter($index) {
-	$letter = "-";
-	$guesses = explode(',', $_COOKIE['guesses']);
-	for ($i = 0; $i < count($guesses); $i++) {
-		if ($guesses[$i] == $_COOKIE['word'][$index]) {
-			$letter = $guesses[$i];
-		}
-	}
-	return $letter;
-}
-
-
-# called each time the guess submit button is activated.
-# checks each character to see if its been guessed yet,
-# and builds the corresponding word.
-# EX: if the word is "paper" and guesses made is "p,r",
-# the built word would be "p-p-r". this is returned as a 
-# $_GET variable.
-function buildWord() {
-	$word = "";
-	for ($i = 0; $i < strlen($_COOKIE['word']); $i++) {
-		$word .= getLetter($i);
-	}
-	header('Location: game.php?word='.$word);
-}
-
-
 # This is the function responsible for actually displaying
 # the guessed word so far. given a built word, IE:'p-p-r',
 # this function displays a series of letters and dashses.
 # the special character <0x2007> represents an empty space
 # that is not removed by html, creating the effect of 
 # several consecutive unguessed characters when needed.
-function displayWord($word) {
-	if ($word == $_COOKIE['word']) {
-		header("Location: gameOver.php?state=win");
-	}
+function displayWord() {
+	$word = $_COOKIE['word'];
+	$guesses = explode(',', $_COOKIE['guesses']);
+	$space = " ";
+	$line = "";
+	$guess = "";
 	for ($i = 0; $i < strlen($word); $i++) {
-		if ($word[$i] == '-') {
-			echo '<span class=letter>' . " " . '</span>';
+		if (in_array($word[$i], $guesses)) {
+			$guess .= $word[$i];
+			$line .= '<span class="letter">' . $word[$i] . '</span>';
 		} else {
-			echo '<span class=letter>' . $word[$i] . '</span>';
+			$line .= '<span class="letter">' . $space . '</span>';
 		}
 	}
+
+	if ($guess == $word) {
+		header("Location: gameOver.php?state=win");
+	}
+
+	return $line;
+}
+
+function getUsername() {
+	return "username";
+}
+
+
+# display already guessed letters on two lines
+# the first line displays letters a-m 
+# the second displays letters n-z
+function displayGuessedLetters() {
+	$line1 = "";
+	$line2 = "";
+	$guesses = explode(',', $_COOKIE['guesses']);
+	$space = " ";
+
+	# add a-m guesses
+	for ($i = ord("a"); $i < ord("a") + 13; $i++) {
+		if (in_array(chr($i), $guesses)) {
+			$line1 .= '<span class="letter">' . chr($i) . '</span>';
+		} else {
+			$line1 .= '<span class="letter">' . $space . '</span>';
+		}
+	}
+
+	# add n-z guesses
+	for ($i = ord("n"); $i < ord("n") + 13; $i++) {
+		if (in_array(chr($i), $guesses)) {
+			$line2 .= '<span class="letter">' . chr($i) . '</span>';
+		} else {
+			$line2 .= '<span class="letter">' . $space . '</span>';
+		}
+	}
+
+	# return both lines
+	return "<br><span>" . $line1 . "</span>" . "<br><br>" . "<span>" . $line2 ."</span>";
 }
 ?>
