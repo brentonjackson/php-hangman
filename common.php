@@ -7,7 +7,16 @@ function head() {
     echo "<title>Hang Man</title>";
     echo "<link rel=\"icon\" type=\"image/x-icon\" href=\"./images/favicon/favicon.ico\">";
     echo "<link href=\"./hangman.css\" rel=\"stylesheet\"/></head>";
-    echo "<body>";
+    echo "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Boogaloo\">
+    </head>";
+    // echo "<body>";
+}
+function head_unfinished() {
+    echo "<!DOCTYPE html><html><head><meta charset=\"utf-8\" />";
+    echo "<title>Hang Man</title>";
+    echo "<link rel=\"icon\" type=\"image/x-icon\" href=\"./images/favicon/favicon.ico\">";
+    echo "<link href=\"./hangman.css\" rel=\"stylesheet\"/>";
+    // echo "<body>";
 }
 
 function navbar() {
