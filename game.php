@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<?php include("gameLogic.php");?>
-	<title>
-		Hangman
-	</title>
-</head>
-<body class="game-body">
-	<div class="nav-bar">
-		<div class="dropdown">
-			<button class="drop-button">Difficulty</button>
-			<div class="dropdown-items">
-				<a class="easy" href="#">Easy</a>
-				<a class="medium" href="#">Medium</a>
-				<a class="hard" href="#">Hard</a>
-				<a class="expert" href="#">Expert</a>
-			</div>
-		</div>
-		<a href="leaderboard.php">Leaderboard</a>
-		<h1>HANGMAN</h1>
-		<a class="nav-left" href="login.php"><?php echo getUsername();?></a>
-	</div>
+<?php
+  require('common.php');
+  include("gameLogic.php");
+  head();
+?>
+	<?php navbar(); ?>
 	<div class='level-selector <?="easy"?>'>
 		<h3>EASY</h3>
 	</div>
@@ -36,7 +17,7 @@
 
 		<!-- This shows the hangman image at its given stage -->
 		<?php
-		echo '<img src="images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '">';
+		echo '<img src="./images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '.png">';
 		?>
 
 
@@ -53,5 +34,4 @@
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
   </div>
-</body>
-</html>
+  <?php footer(); ?>
