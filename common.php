@@ -29,7 +29,7 @@ function navbar() {
     echo "<div class=\"nav-bar\">
     <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
-    <h1>HANGMAN</h1>
+    <a href=\"./index.php\"><h1>HANGMAN</h1></a>
     <a class=\"nav-left\" href=\"./login.php\"><?php echo getUsername();?></a>
 </div>";
 }
