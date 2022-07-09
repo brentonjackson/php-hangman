@@ -7,7 +7,7 @@ function head() {
     echo "<title>Hangman</title>";
     echo "<link rel=\"icon\" type=\"image/x-icon\" href=\"./images/favicon/favicon.ico\">";
     echo "<link href=\"./index.css\" rel=\"stylesheet\"/></head>";
-     // echo "<body>";
+    echo "<body class=\"game-body\">";
 }
 function head_unfinished() {
     echo "<!DOCTYPE html><html><head><meta charset=\"utf-8\" />";

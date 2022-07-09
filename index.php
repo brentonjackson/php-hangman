@@ -9,7 +9,6 @@
   require('common.php');
   head();
 ?>
-<body class="game-body">
 <?php navbar(); ?>
 <div class="content game-div">
     <h1 class="game-title">Hangman</h1>

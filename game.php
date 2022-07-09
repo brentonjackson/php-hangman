@@ -3,7 +3,6 @@
   include("gameLogic.php");
   head();
 ?>
-<body class="game-body">
 	<?php navbar(); ?>
 	<div class='level-selector <?="easy"?>'>
 		<h3>EASY</h3>

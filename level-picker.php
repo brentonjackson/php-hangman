@@ -9,7 +9,6 @@
   require('common.php');
   head();
 ?>
-<body class="game-body">
 <?php navbar(); ?>
 <div class="content">
     <h1 class="level-picker-title">Level Picker</h1>

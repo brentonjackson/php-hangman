@@ -26,7 +26,6 @@
   require('common.php');
   head();
 ?>
-<body class="game-body">
 <?php navbar(); ?>
 <div id="Frame0">
   <h1>PHP Login Script Without Using Database Demo.</h1>
