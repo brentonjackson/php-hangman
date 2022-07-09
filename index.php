@@ -10,7 +10,7 @@
   head();
 ?>
 <body class="game-body">
-<?php game_navbar(); ?>
+<?php navbar(); ?>
 <div class="content game-div">
     <h1 class="game-title">Hangman</h1>
     <img src="./images/hangman.png" alt="">

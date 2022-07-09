@@ -4,3 +4,4 @@
 ?>
 <body class="game-body">
 <?php navbar(); ?>
+<?php footer(); ?>

@@ -17,17 +17,16 @@ function head_unfinished() {
     // echo "<body>";
 }
 
-function navbar() {
-    echo "<div class=\"navbar\">";
-    echo "<div class=\"navbar-item home-logo\"><a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a></div>";
-    echo "<div class=\"navbar-item leaderboard\"><a href=\"./leaderboard.php\">View Leaderboard</a></div>";
-    echo "<div class=\"navbar-item sign-in\">Username/signin/out stuff</div>";
-    echo "</div>";
-}
+// function navbar() {
+//     echo "<div class=\"navbar\">";
+//     echo "<div class=\"navbar-item home-logo\"><a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a></div>";
+//     echo "<div class=\"navbar-item leaderboard\"><a href=\"./leaderboard.php\">View Leaderboard</a></div>";
+//     echo "<div class=\"navbar-item sign-in\">Username/signin/out stuff</div>";
+//     echo "</div>";
+// }
 
-function game_navbar() {
+function navbar() {
     echo "<div class=\"nav-bar\">
-    
     <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
     <h1>HANGMAN</h1>

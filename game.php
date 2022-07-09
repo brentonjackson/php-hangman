@@ -4,7 +4,7 @@
   head();
 ?>
 <body class="game-body">
-	<?php game_navbar(); ?>
+	<?php navbar(); ?>
 	<div class='level-selector <?="easy"?>'>
 		<h3>EASY</h3>
 	</div>
@@ -35,5 +35,4 @@
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
   </div>
-</body>
-</html>
+  <?php footer(); ?>
