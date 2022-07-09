@@ -54,10 +54,21 @@ function nextImage() {
 # yet. sets the corresponding variables to be used
 function loadCookies() {
 	# RUN AT START
+	# if there is no difficulty set, default
+	# $_GET["difficulty"] or "easy"
+	if (!isset($_COOKIE["difficulty"])) {
+		$mode = isset($_GET["difficulty"]) ? $_GET["difficulty"] : "easy";
+		setcookie("difficulty", $mode, time() + (3600 * 24));
+		$_COOKIE['difficulty'] = $mode;
+	}
+
+
+	# RUN AT START
 	# if there is no current word, pick one
 	# from the list
 	if (!isset($_COOKIE['word'])) {
-		$file = fopen("txt/easy.csv", "r");
+		$mode = isset($_GET["difficulty"]) ? $_GET["difficulty"] : "easy";
+		$file = fopen("txt/".$mode.".csv", "r");
 		$words = fgetcsv($file);
 		$word = $words[rand(0, count($words) - 1)];
 		fclose($file);
@@ -112,11 +123,6 @@ function displayWord() {
 
 	return $line;
 }
-
-function getUsername() {
-	return "username";
-}
-
 
 # display already guessed letters on two lines
 # the first line displays letters a-m 

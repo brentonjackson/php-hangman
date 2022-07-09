@@ -41,4 +41,9 @@ function footer() {
 }
 
 
+function getUsername() {
+    return "username";
+}
+
+
 ?>
