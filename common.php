@@ -4,18 +4,16 @@
 // header
 function head() {
     echo "<!DOCTYPE html><html><head><meta charset=\"utf-8\" />";
-    echo "<title>Hang Man</title>";
+    echo "<title>Hangman</title>";
     echo "<link rel=\"icon\" type=\"image/x-icon\" href=\"./images/favicon/favicon.ico\">";
-    echo "<link href=\"./hangman.css\" rel=\"stylesheet\"/></head>";
-    echo "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Boogaloo\">
-    </head>";
-    // echo "<body>";
+    echo "<link href=\"./index.css\" rel=\"stylesheet\"/></head>";
+     // echo "<body>";
 }
 function head_unfinished() {
     echo "<!DOCTYPE html><html><head><meta charset=\"utf-8\" />";
-    echo "<title>Hang Man</title>";
+    echo "<title>Hangman</title>";
     echo "<link rel=\"icon\" type=\"image/x-icon\" href=\"./images/favicon/favicon.ico\">";
-    echo "<link href=\"./hangman.css\" rel=\"stylesheet\"/>";
+    echo "<link href=\"./index.css\" rel=\"stylesheet\"/>";
     // echo "<body>";
 }
 
@@ -25,6 +23,16 @@ function navbar() {
     echo "<div class=\"navbar-item leaderboard\"><a href=\"./leaderboard.php\">View Leaderboard</a></div>";
     echo "<div class=\"navbar-item sign-in\">Username/signin/out stuff</div>";
     echo "</div>";
+}
+
+function game_navbar() {
+    echo "<div class=\"nav-bar\">
+    
+    <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
+    <a href=\"./leaderboard.php\">Leaderboard</a>
+    <h1>HANGMAN</h1>
+    <a class=\"nav-left\" href=\"./login.php\"><?php echo getUsername();?></a>
+</div>";
 }
 
 function footer() {

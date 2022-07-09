@@ -18,7 +18,7 @@ if(isset($_POST["guess_submit"])) {
 function addGuess() {
 	# if the entire word is guessed, enter the win page
 	if ($_POST['guess'] == $_COOKIE['word']) {
-		header("Location: gameOver.php?state=win");
+		header("Location: game-over.php?state=win");
 	}
 
 	# add current guess to the guesses cookie
@@ -43,7 +43,7 @@ function nextImage() {
 	# if more than 7 bad guesses were made
 	# terminate game
 	if ($_COOKIE['imageIndex'] > 7) {
-		header("Location: gameOver.php?state=lost");
+		header("Location: game-over.php?state=lost");
 	}
 }
 
@@ -107,7 +107,7 @@ function displayWord() {
 	}
 
 	if ($guess == $word) {
-		header("Location: gameOver.php?state=win");
+		header("Location: game-over.php?state=win");
 	}
 
 	return $line;

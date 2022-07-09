@@ -7,11 +7,9 @@
 
 <?php
   require('common.php');
-  head_unfinished();
+  head();
 ?>
-<link rel="stylesheet" href="./homepage.css"/>
-</head>
-<body id="homepage">
+<body class="game-body">
 <?php navbar(); ?>
 <div class="content">
     <h1 class="level-picker-title">Level Picker</h1>

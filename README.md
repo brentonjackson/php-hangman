@@ -29,9 +29,9 @@ This project was created using HTML, CSS, PHP
 | signup.php       | Signup page                                       |
 | level-picker.php | Choose game difficulty level                      |
 | game.php         | Main game page                                    |
-| game-win.php     | Display after winning game                        |
-| game-lose.php    | Display after losing game                         |
-| hangman.css      | Global CSS styles                                 |
+| game-over.php    | Display after finishing game                      |
+| gameLogic.php    | PHP Logic for the game                            |
+| index.css        | Global CSS styles                                 |
 
 ## Credits
 

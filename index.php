@@ -7,16 +7,15 @@
 
 <?php
   require('common.php');
-  head_unfinished();
+  head();
 ?>
-<link rel="stylesheet" href="./homepage.css"/>
-</head>
-<body id="homepage">
-<?php navbar(); ?>
-<div class="content">
+<body class="game-body">
+<?php game_navbar(); ?>
+<div class="content game-div">
     <h1 class="game-title">Hangman</h1>
+    <img src="./images/hangman.png" alt="">
     <div class="play-button-div">
-        <button class="play-button">Play Game</button>
+      <a href="./game.php"><button class="play-button">Play Game</button></a>
     </div>
 </div>
 
