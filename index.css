@@ -98,7 +98,8 @@
   color: white;
 }
 
-.nav-bar h1 {
+.nav-bar h1,
+.navbar-title {
   pointer-events: none;
   left: 0;
   position: absolute;
