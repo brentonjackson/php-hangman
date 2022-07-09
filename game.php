@@ -7,8 +7,10 @@
 
 <?php
   require('common.php');
-  head();
+  head_unfinished();
 ?>
+<link rel="stylesheet" href="./game.css"/>
+</head>
 <body>
 <?php navbar(); ?>
 <div class="content">
