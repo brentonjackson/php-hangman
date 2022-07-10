@@ -30,8 +30,11 @@ function navbar() {
     <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
     <h1 class=\navbar-title\"><a href=\"./index.php\">HANGMAN</a></h1>
-    <a class=\"nav-left\" href=\"./login.php\"><?php echo getUsername();?></a>
-</div>";
+    <a class=\"nav-left\" href=\"./login.php\">";
+    if (isset($_SESSION['Username'])) {
+        echo $_SESSION['Username'];
+    }
+    echo "</a></div>";
 }
 
 function footer() {

@@ -113,10 +113,6 @@ function displayWord() {
 	return $line;
 }
 
-function getUsername() {
-	return "username";
-}
-
 
 # display already guessed letters on two lines
 # the first line displays letters a-m 

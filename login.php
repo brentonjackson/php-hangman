@@ -2,18 +2,37 @@
 	
 	/* Check Login form submitted */	
 	if(isset($_POST['Submit'])){
-		/* Define username and associated password array */
-		/* You can change username and associated password array to your pref*/
-		$logins = array('Henry' => '123456','username1' => 'password1','username2' => 'password2');
 		
-		/* Check and assign submitted Username and Password to new variable */
+    /* Check and assign submitted Username and Password to new variable */
 		$Username = isset($_POST['Username']) ? $_POST['Username'] : '';
 		$Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 		
+    /* Define username and associated password array */
+		/* You can change username and associated password array to your pref*/
+		// $logins = array('Henry' => '123456','username1' => 'password1','username2' => 'password2');
+
+    // Create logins associative array of type 
+    // (Username1 => Password1, Username2 => Password2, ect... )
+
+    
+    $filename = './txt/userdata.csv';
+    $handle = fopen($filename, "r");
+    $num = 1;
+    $logins = array();
+    if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+          // add line to associative array
+          $num = $num + 1;
+          $data = explode(",", $line);
+          $logins[$data[0]] = $data[1];
+      }
+      fclose($handle);
+    }
+
 		/* Check Username and Password existence in defined array */		
-		if (isset($logins[$Username]) && $logins[$Username] == $Password){
+		if (isset($logins[$Username]) && strcmp($logins[$Username],$Password)){
 			/* Success: Set session variables and redirect to Protected page  */
-			$_SESSION['UserData']['Username']=$logins[$Username];
+			$_SESSION['Username']=$Username;
 			header("location:index.php");
 			exit;
 		} else {
@@ -37,7 +56,7 @@
     <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">
       <?php if(isset($msg)){?>
       <tr>
-        <td colspan="2" align="center" valign="top"><?php echo $msg;?></td>
+        <td colspan="2" align="center" valign="top"><?php echo $msg; echo " " . $Username . " not recognized";?></td>
       </tr>
       <?php } ?>
       <tr>
