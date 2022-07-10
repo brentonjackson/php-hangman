@@ -1,5 +1,8 @@
 <?php session_start(); /* Starts the session */
-	
+	// ini_set('display_errors', 1);
+  // ini_set('display_startup_errors', 1);
+  // error_reporting(E_ALL);
+  session_unset();
 	/* Check Login form submitted */	
 	if(isset($_POST['Submit'])){
 		
@@ -24,13 +27,13 @@
           // add line to associative array
           $num = $num + 1;
           $data = explode(",", $line);
-          $logins[$data[0]] = $data[1];
+          $logins[trim($data[0])] = trim($data[1]);
       }
       fclose($handle);
     }
 
 		/* Check Username and Password existence in defined array */		
-		if (isset($logins[$Username]) && strcmp($logins[$Username],$Password)){
+		if (isset($logins[$Username]) && !strcmp($logins[$Username],$Password)){
 			/* Success: Set session variables and redirect to Protected page  */
 			$_SESSION['Username']=$Username;
 			header("location:index.php");
@@ -77,5 +80,6 @@
       </tr>
     </table>
   </form>
+  <span>Don't have an account? <a href="./signup.php">Sign up here</a></span>
 </div>
 <?php footer(); ?>
