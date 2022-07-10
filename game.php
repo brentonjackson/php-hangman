@@ -1,7 +1,13 @@
 <?php
-  require('common.php');
-  include("gameLogic.php");
-  head();
+	session_start(); /* Starts the session */
+
+	if(!isset($_SESSION['Username'])){
+		header("location:login.php");
+		exit;
+	}
+	require('common.php');
+	include("gameLogic.php");
+	head();
 ?>
 	<?php navbar(); ?>
 	<div class='level-selector <?="easy"?>'>
