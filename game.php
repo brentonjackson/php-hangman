@@ -23,7 +23,7 @@
 	<!-- Grab difficulty level from query parameters -->
 	<div class='level-selector <?=isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy"?>'>
 		<h3><?=strtoupper(isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy")?></h3>
-
+	</div>
 	<div class="game-div">
 		<!-- Make sure important cookies have been set such as the word being guessed, guesses made, and number of failed guesses. Each cookie lasts 24hr -->
 		<?php loadCookies();?>			
