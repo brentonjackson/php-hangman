@@ -40,6 +40,21 @@ function navbar() {
     
     echo "</a></div>";
 }
+function homepage_navbar() {
+    echo "<div class=\"nav-bar\"><a href=\"./summary.html\">Summary</a>
+    <a href=\"./leaderboard.php\">Leaderboard</a>
+    <h1>HANGMAN</h1>";
+    if (isset($_SESSION['Username'])) {
+        echo "<a class=\"nav-left username\" href=\"./login.php\">";
+        echo $_SESSION['Username'];
+        echo "<br><span> (Sign Out)</span>";
+    } else {
+        echo "<a class=\"nav-left\" href=\"./login.php\">";
+        echo "Sign In";
+    }
+    
+    echo "</a></div>";
+}
 
 function footer() {
     echo "</body></html>";

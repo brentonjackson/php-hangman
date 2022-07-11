@@ -5,7 +5,7 @@
 // }
 require('common.php');
 head();
-navbar();
+homepage_navbar();
 ?>
 
   <div class="content">
