@@ -134,19 +134,19 @@ function loadCookies() {
 
 function resetCookies() {
 	setcookie("hint", "", time() - 3600);
-	unset($_COOKIE['hint']);
+
 
 	setcookie("difficulty", "", time() - 3600);
-	unset($_COOKIE['difficulty']);
+
 
 	setcookie("guesses", "", time() - 3600);
-	unset($_COOKIE['guesses']);
+
 
 	setcookie("imageIndex", "", time() - 3600);
-	unset($_COOKIE['imageIndex']);
+
 
 	setcookie("points", "", time() - 3600);
-	unset($_COOKIE['points']);
+
 }
 
 
