@@ -207,6 +207,7 @@ function scoreUpdate(){
 			$userData[3] = $_COOKIE['points'];
 		} else {
 			$userData[3] .= '|' . $_COOKIE['points'];
+		}
 	} else{
 		if ($userData[4] == '-') {
 			$userData[4] = $_COOKIE['points'];
@@ -220,8 +221,8 @@ function scoreUpdate(){
 	$userData[5] = str_replace("\n", "", $userData[5]);
 	$lines[$lineNumber] = implode(",", $userData);
 	file_put_contents("./txt/scores.txt", implode("\n", $lines));
-	}
-		
 }
+		
+
 
 ?>
