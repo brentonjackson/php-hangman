@@ -1,19 +1,41 @@
 <?php session_start(); /* Starts the session */
-	
+	// ini_set('display_errors', 1);
+  // ini_set('display_startup_errors', 1);
+  // error_reporting(E_ALL);
+  session_unset();
 	/* Check Login form submitted */	
 	if(isset($_POST['Submit'])){
-		/* Define username and associated password array */
-		/* You can change username and associated password array to your pref*/
-		$logins = array('Henry' => '123456','username1' => 'password1','username2' => 'password2');
 		
-		/* Check and assign submitted Username and Password to new variable */
+    /* Check and assign submitted Username and Password to new variable */
 		$Username = isset($_POST['Username']) ? $_POST['Username'] : '';
 		$Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 		
+    /* Define username and associated password array */
+		/* You can change username and associated password array to your pref*/
+		// $logins = array('Henry' => '123456','username1' => 'password1','username2' => 'password2');
+
+    // Create logins associative array of type 
+    // (Username1 => Password1, Username2 => Password2, ect... )
+
+    
+    $filename = './txt/userdata.csv';
+    $handle = fopen($filename, "r");
+    $num = 1;
+    $logins = array();
+    if ($handle) {
+      while (($line = fgets($handle)) !== false) {
+          // add line to associative array
+          $num = $num + 1;
+          $data = explode(",", $line);
+          $logins[trim($data[0])] = trim($data[1]);
+      }
+      fclose($handle);
+    }
+
 		/* Check Username and Password existence in defined array */		
-		if (isset($logins[$Username]) && $logins[$Username] == $Password){
+		if (isset($logins[$Username]) && !strcmp($logins[$Username],$Password)){
 			/* Success: Set session variables and redirect to Protected page  */
-			$_SESSION['UserData']['Username']=$logins[$Username];
+			$_SESSION['Username']=$Username;
 			header("location:index.php");
 			exit;
 		} else {
@@ -26,7 +48,15 @@
   require('common.php');
   head();
 ?>
-<?php navbar(); ?>
+<div class="nav-bar">
+  <a href="./leaderboard.php">Leaderboard</a>
+  <h1>HANGMAN</h1>
+  <?php if (isset($_SESSION['username'])) {?>
+    <a class="nav-left" href="login.php"><?=$_SESSION["username"]?><span> (Sign Out)</span></a>
+  <?php } else {?>
+    <a class="nav-left" href="login.php">Sign In</a>
+  <?php } ?>
+</div>
 <div class="content">
   <div id="Frame0">
     <h1>PHP Login Script Without Using Database Demo.</h1>
@@ -37,7 +67,7 @@
     <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">
       <?php if(isset($msg)){?>
       <tr>
-        <td colspan="2" align="center" valign="top"><?php echo $msg;?></td>
+        <td colspan="2" align="center" valign="top"><?php echo $msg; echo " " . $Username . " not recognized";?></td>
       </tr>
       <?php } ?>
       <tr>
@@ -54,9 +84,9 @@
       <tr>
         <td>&nbsp;</td>
         <td><input name="Submit" type="submit" value="Login" class="Button3"></td>
-       <td>     <tr> Username  => Henry' Password => '123456'     </tr></td>
       </tr>
     </table>
   </form>
+  <span>Don't have an account? <a href="./signup.php">Sign up here</a></span>
 </div>
 <?php footer(); ?>
