@@ -26,11 +26,11 @@ function head_unfinished() {
 // }
 
 function navbar() {
-    echo "<div class=\"nav-bar\">
+    echo "<div class=\"nav-bar\"><a href=\"index.php\">Home</a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
     <h1>HANGMAN</h1>";
     if (isset($_SESSION['Username'])) {
-        echo "<a class=\"nav-left\" href=\"./login.php\">";
+        echo "<a class=\"nav-left username\" href=\"./login.php\">";
         echo $_SESSION['Username'];
         echo "<br><span> (Sign Out)</span>";
     } else {
@@ -42,9 +42,7 @@ function navbar() {
 }
 
 function footer() {
-    echo "<div class=\"footer\">";
-    echo "© [Web Group Name] 2022";
-    echo "</div></body></html>";
+    echo "</body></html>";
 }
 
 

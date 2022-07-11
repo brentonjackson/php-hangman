@@ -27,23 +27,10 @@
 <?php
   require('common.php');
   head();
-
+  navbar();
 ?>
-<div class="nav-bar">
-  <a href="./leaderboard.php">Leaderboard</a>
-  <h1>HANGMAN</h1>
-  <?php if (isset($_SESSION['username'])) {?>
-    <a class="nav-left" href="login.php"><?=$_SESSION["username"]?><br><span>(Sign Out)</span></a>
-  <?php } else {?>
-    <a class="nav-left" href="login.php">Sign In</a>
-  <?php } ?>
-</div>
 <div class="content">
-  <div id="Frame0">
-    <h1>PHP Login Script Without Using Database Demo.</h1>
-  
-  </div>
-  <br>
+
   <form action="" method="post" name="Signup_Form">
     <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">
       <?php if(isset($msg)){?>

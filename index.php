@@ -16,7 +16,6 @@ navbar();
     <br>
     <a class="play-button" href="level-picker.php">play!</a>
     <br><br>
-    <button><a href="./level-picker.php">Play</a></button>
   </div>
 
 <? footer(); ?>

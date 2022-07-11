@@ -1,10 +1,10 @@
-<?php
+<?php session_start();
   $easy = array();
   $medium = array();
   $hard = array();
   $expert = array();
 
-  $file = fopen("txt/userdata.csv", "r");
+  $file = fopen("txt/scores.txt", "r");
   if ($file) {
     while (($line = fgets($file)) !== false) {
       $data = explode(",", $line);
@@ -47,25 +47,13 @@
   }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Leaderboards</title>
-  <link rel="stylesheet" type="text/css" href="index.css">
-  <?php include("gameLogic.php"); ?>
-  <?php include("common.php"); ?>
-</head>
-<body class="game-body">
-  <div class="nav-bar">
-    <a href="index.php">Home</a>
-    <h1>HANGMAN</h1>
-    <?php if (isset($_SESSION['Username'])) {?>
-      <a class="nav-left" href="login.php"><?=$_SESSION["Username"]?><span> (Sign Out)</span></a>
-    <?php } else {?>
-      <a class="nav-left" href="login.php">Sign In</a>
-    <?php } ?>
-  </div>
+<?php
+  require('common.php');
+  require('gameLogic.php');
+  head();
+  navbar();
+?>
+
   <div class="leader-columns">
     <div class="column">
       <h2 class="easy">EASY</h2>
@@ -94,5 +82,5 @@
         <?php listScores($expert);?>
       </ul>
     </div>
-</div>
+  </div>
 <? footer() ?>
