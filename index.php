@@ -15,6 +15,7 @@
 </head>
 <body class="game-body">
   <div class="nav-bar">
+    <a href="./summary.html">Summary</a>
     <a href="./leaderboard.php">Leaderboard</a>
     <h1>HANGMAN</h1>
     <?php if (isset($_SESSION['Username'])) {?>
