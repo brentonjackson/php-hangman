@@ -8,6 +8,21 @@ head();
 navbar();
 ?>        
         
+
+
+  <div class="content">
+    <ul style="padding: 0; width:40%; margin: auto; text-align: left;">
+      <li>Leader: Nathan Moné</li>
+      <li>Project Name: D3</li>
+      <li>Description: A classic hangman game with 4 difficulties and leaderboard for each category.</li>
+      <li>Team Member 1: Nathan Moné
+        <ul>
+          <li>Letter guessing functionality</li>
+          <li>Leaderboard user score sorting</li>
+          <li>Hangman picture changing</li>
+        </ul>
+      </li>
+      <li>Team Member 2: Jabari Mitchell
         <ul>
           <li></li>
         </ul>
@@ -18,7 +33,5 @@ navbar();
         </ul>
       </li>
     </ul>
-    <br><br>
-    <span> © [Web Group Name] 2022</span>
   </div>
 <? footer(); ?>
