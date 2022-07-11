@@ -13,7 +13,7 @@
     // Open the file to get existing content
     $current = file_get_contents($filename);
     // Append a new person to the file
-    $current .= PHP_EOL . $Username . "," . $Password . ",-,-,-,-";
+    $current .= PHP_EOL . $Username . "," . $Password;
     // Write the contents back to the file
     echo $current;
     echo "<script>console.log('". json_encode($current) . "')</script>";

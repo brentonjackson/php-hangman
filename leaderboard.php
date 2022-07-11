@@ -94,6 +94,5 @@
         <?php listScores($expert);?>
       </ul>
     </div>
-  </div>
-</body>
-</html>
+</div>
+<? footer() ?>
