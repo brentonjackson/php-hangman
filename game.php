@@ -1,26 +1,48 @@
 <?php
 	session_start(); /* Starts the session */
+	include("gameLogic.php");
 
 	if(!isset($_SESSION['Username'])){
 		header("location:login.php");
 		exit;
 	}
-	require('common.php');
-	include("gameLogic.php");
-	
-	head();
+
+	if(isset($_POST['hint'])) {
+		setcookie("hint", "no", time() + (3600 * 24));
+		$_COOKIE["hint"] = "no";
+		giveHint();
+	}
 ?>
-	<?php navbar(); ?>
-	<!-- Grab difficulty level from query parameters -->
-	<div class='level-selector <?=isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy"?>'>
-		<h3><?=strtoupper(isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy")?></h3>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<?php include("common.php");?>
+	<!-- Make sure important cookies have been set
+	such as the word being guessed, guesses made,
+	and number of failed guesses.
+	Each cookie lasts 24hr -->
+	<?php loadCookies();?>	
+	<title>
+		Hangman
+	</title>
+</head>
+<body class="game-body">
+	<div class="nav-bar">
+		<a href="./index.php">Home</a>
+		<a href="./leaderboard.php">Leaderboards</a>
+		<h1>HANGMAN</h1>
+		<a class="nav-left" href="./login.php"><?php echo getUsername();?></a>
+	</div>
+	<div class='level-selector <?=isset($_COOKIE["difficulty"]) ? $_COOKIE["difficulty"] : "easy"?>'>
+		<h3><?=strtoupper(isset($_COOKIE['difficulty']) ? $_COOKIE['difficulty'] : "easy")?></h3>
 	</div>
 	<div class="game-div">
-		<!-- Make sure important cookies have been set such as the word being guessed, guesses made, and number of failed guesses. Each cookie lasts 24hr -->
-		<?php loadCookies();?>			
 		<!-- This shows the hangman image at its given stage -->
 		<?php
-			echo '<img src="./images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '.png">';		
+		echo '<img src="images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '">';
 		?>
 
 
@@ -36,5 +58,10 @@
 
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
+	  <br><br>
+	  <?php if($_COOKIE['hint'] == 'yes') {?>
+		  <form method="post"><button type="submit" name="hint" value="hint">Hint</button></form>
+		<?php } ?>
   </div>
-<? footer(); ?>
+</body>
+</html>

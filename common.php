@@ -29,17 +29,9 @@ function navbar() {
     echo "<div class=\"nav-bar\">
     <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
-    <h1 class=\navbar-title\">HANGMAN</h1>";
-    if (isset($_SESSION['Username'])) {
-        echo "<a class=\"nav-left\" href=\"./login.php\">";
-        echo $_SESSION['Username'];
-        echo "<br><span>(Sign out)</span>";
-    } else {
-        echo "<a class=\"nav-left\" href=\"./login.php\">";
-        echo "Sign In";
-    }
-    
-    echo "</a></div>";
+    <h1 class=\navbar-title\"><a href=\"./index.php\">HANGMAN</a></h1>
+    <a class=\"nav-left\" href=\"./login.php\"><?php echo getUsername();?></a>
+</div>";
 }
 
 function footer() {
