@@ -42,7 +42,7 @@
 	<div class="game-div">
 		<!-- This shows the hangman image at its given stage -->
 		<?php
-		echo '<img src="images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '">';
+		echo '<img src="images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . ".png" .'">';
 		?>
 
 
