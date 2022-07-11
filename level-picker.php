@@ -13,12 +13,10 @@
 <div class="content">
     <h1 class="level-picker-title">Level Picker</h1>
     <div class="levels">
-    <form action="game.php" method="get" name="Levels_Form">
-        <input class="level-button" type="submit" name="novice-button" value="Novice">
-        <input class="level-button" type="submit" name="intermediate-button" value="Intermediate">
-        <input class="level-button" type="submit" name="advanced-button" value="Advanced">
-        <input class="level-button" type="submit" name="expert-button" value="Expert">
-    </form>
+      <a href="game.php?difficulty=easy"><button class="level-button novice-button">Novice</button></a>
+      <a href="game.php?difficulty=medium"><button class="level-button intermediate-button">Intermediate</button></a>
+      <a href="game.php?difficulty=hard"><button class="level-button advanced-button">Advanced</button></a>
+      <a href="game.php?difficulty=expert"><button class="level-button expert-button">Expert</button></a>
     </div>
 </div>
 
