@@ -7,23 +7,20 @@
 	}
 	require('common.php');
 	include("gameLogic.php");
+	
 	head();
 ?>
 	<?php navbar(); ?>
-	<div class='level-selector <?="easy"?>'>
-		<h3>EASY</h3>
+	<!-- Grab difficulty level from query parameters -->
+	<div class='level-selector <?=isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy"?>'>
+		<h3><?=strtoupper(isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy")?></h3>
 	</div>
 	<div class="game-div">
-		<!-- Make sure important cookies have been set
-		such as the word being guessed, guesses made,
-		and number of failed guesses.
-		Each cookie lasts 24hr -->
-		<!-- include relevant code -->
-		<?php loadCookies();?>		
-
+		<!-- Make sure important cookies have been set such as the word being guessed, guesses made, and number of failed guesses. Each cookie lasts 24hr -->
+		<?php loadCookies();?>			
 		<!-- This shows the hangman image at its given stage -->
 		<?php
-		echo '<img src="./images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '.png">';
+			echo '<img src="./images/hangman_stages/hangman_stage_' . $_COOKIE['imageIndex'] . '.png">';		
 		?>
 
 
@@ -40,4 +37,4 @@
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
   </div>
-  <?php footer(); ?>
+<? footer(); ?>

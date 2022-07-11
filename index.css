@@ -6,12 +6,16 @@
   float: left;
 }
 
+.dropdown:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 .dropdown-items {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 0px 10px lightgrey;
   z-index: 2;
 }
 
@@ -25,7 +29,7 @@
 
 .dropdown-items a {
   min-width: 256px;
-  padding: 5px 0px 5px 0px !important;
+  padding: 7px 0px 7px 0px !important;
   font-size: 16px !important;
   text-decoration: none;
   display: block;
@@ -34,6 +38,7 @@
 .dropdown-items a:hover {
   color: black;
 }
+
 .dropdown:hover .dropdown-items {
   display: block;
 }
@@ -98,8 +103,7 @@
   color: white;
 }
 
-.nav-bar h1,
-.navbar-title {
+.nav-bar h1 {
   pointer-events: none;
   left: 0;
   position: absolute;
@@ -119,6 +123,18 @@
   box-shadow: 0px 0px 10px lightgrey;
   margin: auto;
   text-align: center;
+}
+
+.content img {
+  height: 200px;
+}
+
+.content p {
+  font-size: 18px;
+  margin: auto;
+  text-indent: 2ch;
+  text-align: justify;
+  width: 50%;
 }
 
 .game-body {
@@ -150,4 +166,40 @@
   margin-right: 25px;
   text-decoration: underline;
   font-family: monospace;
+}
+
+.leader-columns {
+  box-shadow: 0px 0px 10px lightgrey;
+  width: 1024px;
+  margin: auto;
+}
+
+.leader-columns:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column:last-child {
+  border: none !important;
+}
+
+.column {
+  border-right: 2px solid black;
+  background-color: white;
+  text-align: center;
+  float: left;
+  width: calc(25% - 8px/5);
+  height: 100vh;
+}
+
+.column ul {
+  padding-left: 0;
+  width: 100%;
+  list-style-type: none;
+}
+
+.column h2 {
+  margin: 0;
+  padding: 15px;
 }
