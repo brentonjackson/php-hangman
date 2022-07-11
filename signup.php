@@ -18,6 +18,11 @@
     echo $current;
     echo "<script>console.log('". json_encode($current) . "')</script>";
 
+    // Make a new file with blank scores for users
+    $scorefile= file_get_contents('./txt/scores.txt');
+    $scorefile .= PHP_EOL . $Username . ",-,-,-,-";
+    file_put_contents('./txt/scores.txt', $scorefile);
+
     file_put_contents($filename, $current);
     echo "Created user " . $Username;
     header("location:login.php");
