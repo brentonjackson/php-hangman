@@ -1,3 +1,13 @@
+<?php session_start(); /* Starts the session */
+// if(!isset($_SESSION['UserData']['Username'])){
+// 	header("location:login.php");
+// 	exit;
+// }
+require('common.php');
+head();
+navbar();
+?>        
+        
         <ul>
           <li></li>
         </ul>
@@ -11,5 +21,4 @@
     <br><br>
     <span> © [Web Group Name] 2022</span>
   </div>
-</body>
-</html>
+<? footer(); ?>

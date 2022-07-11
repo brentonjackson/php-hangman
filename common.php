@@ -41,7 +41,7 @@ function navbar() {
     echo "</a></div>";
 }
 function homepage_navbar() {
-    echo "<div class=\"nav-bar\"><a href=\"./summary.html\">Summary</a>
+    echo "<div class=\"nav-bar\"><a href=\"./summary.php\">Summary</a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
     <h1>HANGMAN</h1>";
     if (isset($_SESSION['Username'])) {
