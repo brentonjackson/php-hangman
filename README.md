@@ -20,18 +20,19 @@ This project was created using HTML, CSS, PHP
 
 ## File Descriptions
 
-| Name             | Description                                       |
-| ---------------- | ------------------------------------------------- |
-| common.php       | Collection of functions to be used in other files |
-| index.php        | Homepage/dashboard                                |
-| leaderboard.php  | Displays leaderboard                              |
-| login.php        | Login page                                        |
-| signup.php       | Signup page                                       |
-| level-picker.php | Choose game difficulty level                      |
-| game.php         | Main game page                                    |
-| game-over.php    | Display after finishing game                      |
-| gameLogic.php    | PHP Logic for the game                            |
-| index.css        | Global CSS styles                                 |
+| Name             | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| common.php       | Collection of functions to be used in other files     |
+| index.php        | Homepage/dashboard                                    |
+| leaderboard.php  | Displays leaderboard                                  |
+| login.php        | Login page                                            |
+| signup.php       | Signup page                                           |
+| level-picker.php | Choose game difficulty level                          |
+| game.php         | Main game page                                        |
+| game-over.php    | Display after finishing game                          |
+| gameLogic.php    | PHP Logic for the game                                |
+| summary.php      | Page that describes the game and our responsibilities |
+| index.css        | Global CSS styles                                     |
 
 ## Credits
 
