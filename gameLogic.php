@@ -54,6 +54,14 @@ function nextImage() {
 # yet. sets the corresponding variables to be used
 function loadCookies() {
 	# RUN AT START
+	# One hint
+	if (!isset($_COOKIE['hint'])) {
+		setcookie("hint", "yes", time() + (3600 * 24));
+		$_COOKIE['hint'] = "yes";
+	}
+
+
+	# RUN AT START
 	# if there is no difficulty set, default
 	# $_GET["difficulty"] or "easy"
 	if (!isset($_COOKIE["difficulty"])) {
@@ -123,6 +131,28 @@ function displayWord() {
 
 	return $line;
 }
+
+
+function giveHint() {
+	$chars = str_split($_COOKIE['word']);
+	for($i = 0; $i < count($chars); $i++) {
+		if (in_array($chars[$i], explode(",",$_COOKIE['guesses']))) {
+			array_splice($chars, $i);
+		}
+	}
+
+	$char = $chars[rand(0, count($chars) - 1)];
+
+	# add current guess to the guesses cookie
+	if ($_COOKIE['guesses'] == ",") {
+		setcookie('guesses', strtolower($char), time() + (3600 * 24));
+		$_COOKIE['guesses'] = strtolower($char);
+	} else {
+		setcookie('guesses', strtolower($_COOKIE['guesses']) . ',' . $char, time() + (3600 * 24));
+		$_COOKIE['guesses'] .= ',' . strtolower($char);
+	}
+}
+
 
 # display already guessed letters on two lines
 # the first line displays letters a-m 

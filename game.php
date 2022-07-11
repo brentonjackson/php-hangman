@@ -1,9 +1,16 @@
 <?php
+	include("gameLogic.php");
 	session_start(); /* Starts the session */
 
 	if(!isset($_SESSION['Username'])){
 		header("location:login.php");
 		exit;
+	}
+
+	if(isset($_POST['hint'])) {
+		setcookie("hint", "no", time() + (3600 * 24));
+		$_COOKIE["hint"] = "no";
+		giveHint();
 	}
 ?>
 
@@ -12,7 +19,6 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="index.css">
-	<?php include("gameLogic.php");?>
 	<?php include("common.php");?>
 	<!-- Make sure important cookies have been set
 	such as the word being guessed, guesses made,
@@ -52,6 +58,10 @@
 
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
+	  <br><br>
+	  <?php if($_COOKIE['hint'] == 'yes') {?>
+		  <form method="post"><button type="submit" name="hint" value="hint">Hint</button></form>
+		<?php } ?>
   </div>
 </body>
 </html>
