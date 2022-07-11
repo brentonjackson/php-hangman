@@ -47,14 +47,10 @@
 <?php
   require('common.php');
   head();
+  navbar();
 ?>
-<?php navbar(); ?>
+
 <div class="content">
-  <div id="Frame0">
-    <h1>PHP Login Script Without Using Database Demo.</h1>
-  
-  </div>
-  <br>
   <form action="" method="post" name="Login_Form">
     <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">
       <?php if(isset($msg)){?>
@@ -76,7 +72,6 @@
       <tr>
         <td>&nbsp;</td>
         <td><input name="Submit" type="submit" value="Login" class="Button3"></td>
-       <td>     <tr> Username  => Henry' Password => '123456'     </tr></td>
       </tr>
     </table>
   </form>

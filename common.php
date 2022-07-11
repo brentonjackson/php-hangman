@@ -26,14 +26,28 @@ function head_unfinished() {
 // }
 
 function navbar() {
-    echo "<div class=\"nav-bar\">
-    <a href=\"./index.php\"><img src=\"./images/favicon/apple-touch-icon.png\" height=\"50px\"></a>
+    echo "<div class=\"nav-bar\"><a href=\"index.php\">Home</a>
     <a href=\"./leaderboard.php\">Leaderboard</a>
-    <h1 class=\navbar-title\">HANGMAN</h1>";
+    <h1>HANGMAN</h1>";
     if (isset($_SESSION['Username'])) {
-        echo "<a class=\"nav-left\" href=\"./login.php\">";
+        echo "<a class=\"nav-left username\" href=\"./login.php\">";
         echo $_SESSION['Username'];
-        echo "<br><span>(Sign out)</span>";
+        echo "<br><span> (Sign Out)</span>";
+    } else {
+        echo "<a class=\"nav-left\" href=\"./login.php\">";
+        echo "Sign In";
+    }
+    
+    echo "</a></div>";
+}
+function homepage_navbar() {
+    echo "<div class=\"nav-bar\"><a href=\"./summary.php\">Summary</a>
+    <a href=\"./leaderboard.php\">Leaderboard</a>
+    <h1>HANGMAN</h1>";
+    if (isset($_SESSION['Username'])) {
+        echo "<a class=\"nav-left username\" href=\"./login.php\">";
+        echo $_SESSION['Username'];
+        echo "<br><span> (Sign Out)</span>";
     } else {
         echo "<a class=\"nav-left\" href=\"./login.php\">";
         echo "Sign In";
@@ -43,9 +57,7 @@ function navbar() {
 }
 
 function footer() {
-    echo "<div class=\"footer\">";
-    echo "© [Web Group Name] 2022";
-    echo "</div></body></html>";
+    echo "</body></html>";
 }
 
 

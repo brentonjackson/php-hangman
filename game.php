@@ -7,10 +7,19 @@
 	}
 	require('common.php');
 	include("gameLogic.php");
-	
 	head();
-?>
-	<?php navbar(); ?>
+	navbar(); 
+	// Make sure important cookies have been set
+	// such as the word being guessed, guesses made,
+	// and number of failed guesses.
+	// Each cookie lasts 24hr
+	loadCookies();
+	if(isset($_POST['hint'])) {
+		setcookie("hint", "no", time() + (3600 * 24));
+		$_COOKIE["hint"] = "no";
+		giveHint();
+	}
+ ?>
 	<!-- Grab difficulty level from query parameters -->
 	<div class='level-selector <?=isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy"?>'>
 		<h3><?=strtoupper(isset($_GET['difficulty']) ? $_GET['difficulty'] : "easy")?></h3>
@@ -36,5 +45,9 @@
 
 	  <!-- Show letters guessed already -->
 	  <span class="word"><?php echo displayGuessedLetters()?></span>
+	  <br><br>
+	  <?php if($_COOKIE['hint'] == 'yes') {?>
+		  <form method="post"><button type="submit" name="hint" value="hint">Hint</button></form>
+		<?php } ?>
   </div>
 <? footer(); ?>

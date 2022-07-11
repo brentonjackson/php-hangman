@@ -2,6 +2,22 @@
   font-family: "Arial";
 }
 
+.play-button {
+  text-decoration: none;
+  padding-left: 26px;
+  padding-right: 26px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #333;
+  color: white;
+  border-bottom: 4px solid black;
+}
+
+.play-button:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 .dropdown {
   float: left;
 }
@@ -85,9 +101,13 @@
 }
 
 .nav-bar a {
+  line-height: 75px;
+  vertical-align: middle;
   float: left;
   color: #f2f2f2;
-  padding: 26px;
+  height: inherit;
+  padding-left: 26px;
+  padding-right: 26px;
   text-decoration: none;
   font-size: 20px;
 }
@@ -112,6 +132,13 @@
   color: white;
   vertical-align: middle;
   line-height: normal;
+}
+.nav-bar .username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
 }
 
 .game-div,
@@ -145,8 +172,18 @@
 }
 
 .game-over-state-text {
+  animation: pop-in ease 0.5s;
   margin: auto;
   text-align: center;
+}
+
+@keyframes pop-in {
+  0% {
+    font-size: 12px;
+  }
+  100% {
+    font-size: inherit;
+  }
 }
 
 .word {
@@ -189,7 +226,7 @@
   background-color: white;
   text-align: center;
   float: left;
-  width: calc(25% - 8px/5);
+  width: calc(25% - 8px / 5);
   height: 100vh;
 }
 
