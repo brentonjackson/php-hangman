@@ -10,7 +10,7 @@ Weekend hangman project for Web Programming class
 
 ## Getting Started
 
-A demo of this project is hosted [here](codd.cs.gsu.edu/~bjackson66/pw/project1/index.php).
+A demo of this project is hosted [here](http://codd.cs.gsu.edu/~bjackson66/pw/project1/index.php).
 
 Clone this repo and upload the files to a PHP server.
 
