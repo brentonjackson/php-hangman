@@ -24,12 +24,17 @@ navbar();
       </li>
       <li>Team Member 2: Jabari Mitchell
         <ul>
-          <li></li>
+          <li>Score Updating System</li>
+          <li>Score Sheet Update with New Users</li>
+          <li>Difficulty Display</li>
         </ul>
       </li>
       <li>Team Member 3: Brenton Jackson
         <ul>
-          <li></li>
+          <li>Build out views</li>
+          <li>User login and signup storage functionality</li>
+          <li>Maintain version control</li>
+          <li>Refactoring and organization of code into modules</li>
         </ul>
       </li>
     </ul>

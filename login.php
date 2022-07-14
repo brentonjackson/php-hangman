@@ -49,7 +49,6 @@
   head();
   navbar();
 ?>
-
 <div class="content">
   <form action="" method="post" name="Login_Form">
     <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">

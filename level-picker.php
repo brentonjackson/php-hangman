@@ -1,5 +1,6 @@
 <?php session_start();
   require('common.php');
+  require('gameLogic.php');
   head();
   navbar();
 ?>
@@ -13,3 +14,5 @@
   <a href="game.php?difficulty=expert"><button class="level-button expert-button">Expert</button></a>
 </div>
 <?php footer(); ?>
+
+

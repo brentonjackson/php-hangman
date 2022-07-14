@@ -8,26 +8,26 @@
   if ($file) {
     while (($line = fgets($file)) !== false) {
       $data = explode(",", $line);
+      if ($data[1] != "-") {
+        $scores = explode("|", $data[1]);
+        $avg = array_sum($scores)/count($scores);
+        array_push($easy, array('name' => $data[0], 'score' => $avg));
+      }
+
       if ($data[2] != "-") {
         $scores = explode("|", $data[2]);
         $avg = array_sum($scores)/count($scores);
-        array_push($easy, array('name' => $data[0], 'score' => $avg));
+        array_push($medium, array('name' => $data[0], 'score' => $avg));
       }
 
       if ($data[3] != "-") {
         $scores = explode("|", $data[3]);
         $avg = array_sum($scores)/count($scores);
-        array_push($medium, array('name' => $data[0], 'score' => $avg));
+        array_push($hard, array('name' => $data[0], 'score' => $avg));
       }
 
       if ($data[4] != "-") {
         $scores = explode("|", $data[4]);
-        $avg = array_sum($scores)/count($scores);
-        array_push($hard, array('name' => $data[0], 'score' => $avg));
-      }
-
-      if ($data[5] != "-") {
-        $scores = explode("|", $data[5]);
         $avg = array_sum($scores)/count($scores);
         array_push($expert, array('name' => $data[0], 'score' => $avg));
       }
@@ -45,15 +45,12 @@
       echo('<li>'. $value['name'] .' : <b>'. intval($value['score']) .'</b></li>');
     }
   }
-?>
 
-<?php
   require('common.php');
   require('gameLogic.php');
   head();
   navbar();
 ?>
-
   <div class="leader-columns">
     <div class="column">
       <h2 class="easy">EASY</h2>

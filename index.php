@@ -18,4 +18,4 @@ homepage_navbar();
     <br><br>
   </div>
 
-<? footer(); ?>
+<?php footer(); ?>

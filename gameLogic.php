@@ -18,6 +18,8 @@ if(isset($_POST["guess_submit"])) {
 function addGuess() {
 	# if the entire word is guessed, enter the win page
 	if ($_POST['guess'] == $_COOKIE['word']) {
+		scoreUpdate();
+		resetCookies();
 		header("Location: game-over.php?state=win");
 	}
 
@@ -36,13 +38,18 @@ function addGuess() {
 function nextImage() {
 	# increment cookie data
 	setcookie('imageIndex', $_COOKIE['imageIndex'] + 1, time() + (3600 * 24));
-
+	setcookie('points', $_COOKIE['points']-100);
 	# increment variable being used
 	$_COOKIE['imageIndex']++;
+	$_COOKIE['points']-=100;
 
 	# if more than 7 bad guesses were made
 	# terminate game
 	if ($_COOKIE['imageIndex'] > 7) {
+		setcookie('points', 0);
+		$_COOKIE['points']=0;
+		scoreUpdate();
+		resetCookies();
 		header("Location: game-over.php?state=lost");
 	}
 }
@@ -101,6 +108,45 @@ function loadCookies() {
 		setcookie("imageIndex", 1, time() + (3600 * 24));
 		$_COOKIE['imageIndex'] = 1;
 	}
+
+
+	if(!isset($_COOKIE['points'])){
+		if(strcmp($_COOKIE["difficulty"],"easy") ==0){
+			setcookie('points',700);
+			$_COOKIE["points"] = 700;
+		}
+		elseif(strcmp($_COOKIE["difficulty"],"medium") ==0){
+			setcookie('points',1000);
+			$_COOKIE["points"] = 1000;
+		
+		}
+		elseif(strcmp($_COOKIE["difficulty"],"hard") ==0){
+			setcookie('points',1400);
+			$_COOKIE["points"] = 1400;
+		}
+		elseif(strcmp($_COOKIE["difficulty"],"expert") ==0){
+			setcookie('points',2000);
+			$_COOKIE["points"] = 2000;
+		}
+	}
+}
+
+
+function resetCookies() {
+	setcookie("hint", "", time() - 3600);
+
+
+	setcookie("difficulty", "", time() - 3600);
+
+
+	setcookie("guesses", "", time() - 3600);
+
+
+	setcookie("imageIndex", "", time() - 3600);
+
+
+	setcookie("points", "", time() - 3600);
+
 }
 
 
@@ -126,6 +172,8 @@ function displayWord() {
 	}
 
 	if ($guess == $word) {
+		scoreUpdate();
+		resetCookies();
 		header("Location: game-over.php?state=win");
 	}
 
@@ -184,4 +232,58 @@ function displayGuessedLetters() {
 	# return both lines
 	return "<br><span>" . $line1 . "</span>" . "<br><br>" . "<span>" . $line2 ."</span>";
 }
+
+
+function scoreUpdate(){
+	$lineNumber = 0;
+	$userData = array();
+	$file = fopen("./txt/scores.txt", "r");
+	if ($file) {
+		while (($line = fgets($file)) !== false) {
+			$data = explode(",", $line);
+			if ($data[0] == $_SESSION['Username']) {
+				$userData = $data;
+				break;
+			}
+			$lineNumber++;
+		}
+		fclose($file);
+	}
+	if ($_COOKIE['difficulty'] == 'easy') {
+		if ($userData[1] == '-') {
+			$userData[1] = $_COOKIE['points'];
+		} else {
+			$userData[1] .= '|' . $_COOKIE['points'];
+		}
+	}
+	elseif($_COOKIE["difficulty"] == "medium"){
+		if ($userData[2] == '-') {
+			$userData[2] = $_COOKIE['points'];
+		} else {
+			$userData[2] .= '|' . $_COOKIE['points'];
+		}
+
+	}
+	elseif($_COOKIE["difficulty"] == "hard"){
+		if ($userData[3] == '-') {
+			$userData[3] = $_COOKIE['points'];
+		} else {
+			$userData[3] .= '|' . $_COOKIE['points'];
+		}
+	}
+	else{
+		if ($userData[4] == '-') {
+			$userData[4] = $_COOKIE['points'];
+		} else {
+			$userData[4] .= '|' . $_COOKIE['points'];
+		}
+	}
+
+	# add the new score to users line
+	$lines = file("./txt/scores.txt", FILE_IGNORE_NEW_LINES);
+	$userData[5] = str_replace("\n", "", $userData[5]);
+	$lines[$lineNumber] = implode(",", $userData);
+	file_put_contents("./txt/scores.txt", implode("\n", $lines));
+}
+
 ?>
